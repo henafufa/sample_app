@@ -1,11 +1,25 @@
-<!DOCTYPE html> 
-<html>  
-  <head>    
-    <title><%= yield(:title) %> | Ruby on Rails Tutorial Sample App</title>    
-    <meta charset="utf-8">    <%= csrf_meta_tags %>    <%= csp_meta_tag %>
-  <%= stylesheet_link_tag 'application', media: 'all',                                           'data-turbolinkstrack': 'reload' %>    
-  <%= javascript_pack_tag 'application', 'data-turbolinkstrack': 'reload' %>  </head>
-<body>    
-  <%= yield %>  
-</body> 
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    <%= full_title(yield(:title)) %>
+  </title>
+  <meta charset="utf-8">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag 'application', media: 'all','data-turbolinkstrack': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinkstrack': 'reload' %>
+     
+ <%= render 'layouts/shim'%>
+</head>
+
+<body>
+  <%= render 'layouts/header'%>
+  <div>
+    <%= yield %>
+  </div>
+  <%= render 'layouts/footer'%>
+</body>
+
 </html>
