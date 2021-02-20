@@ -19,7 +19,6 @@ module SessionsHelper
         if (user_id = session[:user_id])
             @current_user ||= User.find_by(id: user_id)
         elsif (user_id = cookies.encrypted[:user_id])
-            raise # The tests still pass, so this branch iscurrently untested.
             user = User.find_by(id: user_id)
             if user && user.authenticated?(:remember,cookies[:remember_token])
                 log_in user
