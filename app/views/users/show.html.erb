@@ -1,7 +1,7 @@
 <!-- <%= @user.name %>, <%= @user.email %> -->
 <%= provide(:title, @user.name)%>
     <div class="row">
-        <aside class="col-md-6">
+        <aside class="col-md-6" >
             <section class="user_info">
                 <h1>
                     <%= gravatar_for @user %>
@@ -27,7 +27,7 @@
             </section>
         </aside>
 
-        <div class="col-md-8">
+        <div class="col-md-8 display" >
             <% if @user.microposts.any? %>
                 <h3>Microposts (<%= @user.microposts.count %>)</h3>
                 <ol class="microposts">

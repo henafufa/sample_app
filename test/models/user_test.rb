@@ -77,6 +77,15 @@ class UserTest < ActiveSupport::TestCase
         @user.destroy
       end
     end
+    
+    test "associated comments should be destroyed" do
+      @micropost= microposts(:orange)
+      @user.save
+      @user.comments.create!(content: "Lorem ipsum", micropost_id: @micropost.id)
+      assert_difference 'Comment.count', -1 do
+        @user.destroy
+      end
+    end
       
 
     test "should follow and unfollow a user" do
