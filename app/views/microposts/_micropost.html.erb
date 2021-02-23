@@ -5,16 +5,24 @@
         <%= image_tag micropost.image if micropost.image.attached?%>
     </span>
     <span class="timestamp">Posted <%= time_ago_in_words(micropost.created_at) %> ago.</span>
-    <span data-toggle="collapse" data-target="#collapse-<%= micropost.id %>" aria-expanded="false" aria-controls="collapseExample">Comment <%= micropost.comments.count %></span>
+    <div style="display: flex;">
+    <div>
+        <span>
+        <%= render 'shared/reaction_form',micropost_id: micropost.id %>
+        <% if micropost.reactions.any?%>
+        <h5>Likes <%= micropost.reactions.count %></h5><%end%></span></div>
+        <div data-toggle="collapse" data-target="#collapse-<%= micropost.id %>" aria-expanded="false" aria-controls="collapseExample">Comment <%= micropost.comments.count %></div>
+    </div>
     <% if current_user?(micropost.user) %>
         <%= link_to "delete", micropost, method: :delete, data: { confirm: "You sure?" } %>
     <% end %>
-   
+    
     <div class="collapse" id="collapse-<%= micropost.id %>" class="col-md-8">
         <section class="micropost_form">
             <%= render 'shared/comment_form',micropost_id: micropost.id %>
         </section>
         <br>
+        
         <% if micropost.comments.any? %>
             <h5>Comments (<%= micropost.comments.count %>)</h5>
             <ol class="comments">
@@ -33,4 +41,9 @@
       <% end %>
     </div>
 </li>
-    
+
+<script>
+    function myFunction(x) {
+        x.classList.toggle("fa-thumbs-down");
+  }
+</script>

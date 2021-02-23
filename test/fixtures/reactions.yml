@@ -1,0 +1,22 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+
+lion_like:
+  created_at: <%= 10.minutes.ago %>
+  user: michael
+  micropost: orange
+
+dog_like:
+  created_at: <%= 3.years.ago %>
+  user: michael
+  micropost: orange
+
+cat_like:
+  created_at: <%= 2.hours.ago %>
+  user: michael
+  micropost: orange
+
+rat_like:
+  created_at: <%= Time.zone.now %>
+  user: michael
+  micropost: orange

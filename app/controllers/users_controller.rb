@@ -15,6 +15,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id]) 
     @microposts = @user.microposts.paginate(page:params[:page])
     @comment = Comment.new
+    @reaction = Reaction.new
     # debugger
   end
 

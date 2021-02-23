@@ -55,3 +55,14 @@ content = Faker::Lorem.sentence(word_count: 5)
         user.comments.create!(content: content, micropost_id: micropost.id )
     end
  end
+
+#  create like relationships
+users= User.all
+microposts= Micropost.all
+user_like= users[1..8]
+micropost_liked= microposts[4..20]
+user_like.each do |user|
+   micropost_liked.each do |micropost|
+    user.reactions.create!(micropost_id: micropost.id)       
+   end 
+end
